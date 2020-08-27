@@ -1,0 +1,91 @@
+{% extends "base_only_top.html" %}
+{% load static %}
+{% block body_block %}
+
+<link href="{% static 'assets/plugins/global/plugins.bundle.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'assets/plugins/custom/prismjs/prismjs.bundle.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'assets/css/style.bundle.css' %}" rel="stylesheet" type="text/css"/>
+
+<body>
+
+    <h1>hello</h1>
+    <div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <div class="container-fluid">
+                    <br>
+
+                    <div class="card shadow">
+                        <div class="card-header py-3" style="height:60px">
+                            <span class="text m-0 font-weight-bold"><i class="fas fa-user"></i> ข้อมูลซับพลายเออร์ : </span>
+                            <button class="btn btn-sm btn-success" href="" role="button"  onclick="model_register_show('add')"><i class="fas fa-plus"></i> เพิ่มซับพลายเออร์</button>
+                            {% if recycle_bin %}
+                            <button class="btn btn-sm btn-secondary float-right" href="" role="button"  onclick="window.location.href = '{% url "supplier:SupplierList" %}';"><i class="fas fa-arrow-circle-left"></i>&nbsp;Back</button>
+                            <h2 style="text-align: center;">Recycle Bin</h2>
+                            {% else %}
+                            <button class="btn btn-sm btn-secondary float-right" href="" role="button"  onclick="recycle_bin();"><i class="fas fa-trash-restore-alt"></i>&nbsp;Recycle Bin</button>
+                            {% endif %}
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table dataTable my-0 table-hover dtBasicExample" id="dataTable">
+                                    <thead>
+                                        <tr class="table-active">
+                                            <th class="max_width_high"><i class="fa fa-user"></i>&nbsp;ชื่อ</th>
+                                            <th class="max_width_high"><i class="fa fa-user"></i>&nbsp;นามสกุล</th>
+                                            <th class="max_width_high"><i class="fas fa-building"></i>&nbsp;ชื่อบริษัท</th>
+                                            <th class="max_width_low"><i class="fas fa-phone"></i>&nbsp;โทรศัพท์</th>
+                                            <th class="max_width_mid"><i class="fas fa-at"></i>&nbsp;อีเมล์</th>
+                                            <!-- <th class="max_width_mid"><i class="fas fa-calendar-day"></i>&nbsp;วันที่สมัคร</th> -->
+                                            <th class="max_width_mid">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="invoice-table-body" id="Tablesort">
+                                        {% for item in data %}
+                                        <tr>
+                                            <td class="max_width_high">{{ item.name }}</td>
+                                            <td class="max_width_high">{{ item.surname }}</td>
+                                            <td class="max_width_high">{{ item.business_name }}</td>
+                                            <td class="max_width_low">{{ item.phone }}</td>
+                                            <td class="max_width_mid">{{ item.email }}</td>
+                                            <!-- <td class="max_width_mid">{{ item.dated }}</td> -->
+                                            <td class="text-center max_width_mid">
+                                                <div class="btn-group" role="group">
+                                                    <button class="btn btn-info" onclick="supplier_view({{ item.id }});" type="button"><i class="fas fa-search"></i></button>
+                                                    <!-- <button class="btn btn-success" type="button"><i class="far fa-edit"></i></button> -->
+                                                    {% if recycle_bin %}
+                                                    <button class="btn btn-danger" onclick="if (confirm('นำออกจาก Recycle Bin?')) { intobin('Supplier',{{ item.id }},'out'); }" type="button"><i class="fas fa-undo"></i></button>
+                                                    {% else %}
+                                                    <button class="btn btn-danger" onclick="if (confirm('ย้ายรายการนี้ไป Recycle Bin?')) { intobin('Supplier',{{ item.id }},'in'); }" type="button"><i class="fas fa-trash-alt"></i></button>
+                                                    {% endif %}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr class="table-active">
+                                            <th class="max_width_high"><i class="fa fa-user"></i>&nbsp;ชื่อ</th>
+                                            <th class="max_width_high"><i class="fa fa-user"></i>&nbsp;นามสกุล</th>
+                                            <th class="max_width_high"><i class="fas fa-building"></i>&nbsp;ชื่อบริษัท</th>
+                                            <th class="max_width_low"><i class="fas fa-phone"></i>&nbsp;โทรศัพท์</th>
+                                            <th class="max_width_mid"><i class="fas fa-at"></i>&nbsp;อีเมล์</th>
+                                            <!-- <th class="max_width_mid"><i class="fas fa-calendar-day"></i>&nbsp;วันที่สมัคร</th> -->
+                                            <th class="max_width_mid">Action</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'assets/plugins/global/plugins.bundle.js' %}"></script>
+    <script src="{% static 'assets/plugins/custom/prismjs/prismjs.bundle.js' %}"></script>
+    <script src="{% static 'assets/js/scripts.bundle.js' %}"></script>
+
+</body>
+{% endblock %}

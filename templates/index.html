@@ -1,14 +1,23 @@
+{% extends "base_only_top.html" %}
 {% load static %}
+{% block body_block %}
+
 <link href="{% static 'assets/plugins/global/plugins.bundle.css' %}" rel="stylesheet" type="text/css"/>
 <link href="{% static 'assets/plugins/custom/prismjs/prismjs.bundle.css' %}" rel="stylesheet" type="text/css"/>
 <link href="{% static 'assets/css/style.bundle.css' %}" rel="stylesheet" type="text/css"/>
 
-<h1>test 0001</h1>
-<a href="{% url 'main:lab_01' %}"><button type="button" class="btn btn-primary" name="button">LAB base side bar</button></a>
-<a href="{% url 'main:lab_01' %}"><button type="button" class="btn btn-primary" name="button">LAB 01</button></a>
-<a href="{% url 'main:lab_01' %}"><button type="button" class="btn btn-primary" name="button">LAB 01</button></a>
-<img alt="Logo" src="/media/Alert.jpg"/>qwerty
+<body>
 
-<script src="{% static 'assets/plugins/global/plugins.bundle.js' %}"></script>
-<script src="{% static 'assets/plugins/custom/prismjs/prismjs.bundle.js' %}"></script>
-<script src="{% static 'assets/js/scripts.bundle.js' %}"></script>
+    <h1>test 0001</h1>
+    <a href="{% url 'main:lab_01' %}"><button type="button" class="btn btn-primary" name="button">LAB base side bar</button></a>
+    <a href="{% url 'main:lab_01' %}"><button type="button" class="btn btn-primary" name="button">LAB 01</button></a>
+    <a href="{% url 'main:lab_01' %}"><button type="button" class="btn btn-primary" name="button">LAB 01</button></a>
+    <a href="{% url 'main:my_task' %}"><button type="button" class="btn btn-primary" name="button">my_task</button></a>
+    <a href="{% url 'main:add_my_task' %}"><button type="button" class="btn btn-primary" name="button">add_my_task</button></a>
+
+    <script src="{% static 'assets/plugins/global/plugins.bundle.js' %}"></script>
+    <script src="{% static 'assets/plugins/custom/prismjs/prismjs.bundle.js' %}"></script>
+    <script src="{% static 'assets/js/scripts.bundle.js' %}"></script>
+
+</body>
+{% endblock %}

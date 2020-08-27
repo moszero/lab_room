@@ -1,0 +1,74 @@
+{% load static %}
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
+        <title>P WOOD</title>
+        <link rel="shortcut icon" href="/media/misora.ico" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'fa/css/all.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'datatable/datatables.min.css' %}"/>
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <style media="screen">
+        .mydiv {
+            height:1px;
+            overflow-y: auto;
+            }
+        </style>
+    </head>
+
+    <body>
+                <nav class="navbar navbar-light navbar-expand bg-gradient-primary shadow topbar fixed-top ">
+                    <div class="container-fluid justify-content-start">
+                        <a href="{% url 'index' %}"><button type="button" class="btn btn-primary"  id="back_button" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Processing"><i class="fas fa-arrow-left"></i><br>Back</button></a>
+                    </div>
+                    <div class="container-fluid justify-content-end" style="color:white;margin-right:20px;">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                Notification
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Separated link</a>
+                            </div>
+                         </li>
+                        <div class="top_button">
+                            {% if request.user.retailer_user.retailer.name %}
+                            ผู้ใช้งาน&nbsp;:&nbsp;{{ request.user.retailer_user.retailer.name }} <br>ตำแหน่ง&nbsp;:&nbsp;{{ request.user.retailer_user.role_type }}&nbsp;
+                            {% else %}
+                            <a class="linkid">NOT&nbsp;LOGIN</a>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="" id="i_retailer_id" value="{{ request.user.retailer_user.retailer.id }}">
+                    <input type="hidden" name="" id="i_retailer_name" value="{{ request.user.retailer_user.retailer.name }}">
+                    {% if request.user.retailer_user.retailer.name %}
+                    &nbsp;&nbsp;&nbsp;<a tabindex="logout" class="btn btn-primary" href="{% url 'staff:staff_logout' %}" style="" onclick="return confirm('ออกจากระบบ ?')"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                    {% endif %}
+                </nav>
+                <div style="padding-top:80px;height:100%">
+                    <div class="row" style="margin-right: 0rem;margin-left: 0rem;">
+                        <div class="container-fluid">
+                            {% block body_block %}
+
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+    </body>
+</html>
+
+<!-- js placed at the end of the document so the pages load faster -->
+{% block scripts %}
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'fa/js/all.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+<script src="{% static 'js/script.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'datatable/datatables.min.js' %}"></script>
+{% endblock %}

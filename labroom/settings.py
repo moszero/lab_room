@@ -25,8 +25,10 @@ SECRET_KEY = '7h$09#qbxxy7v7uv$&2tb&_eln1s$vxdtexokbqfxmxs^$=(xb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = ["localhost","*"]
+# ALLOWED_HOSTS = ["203.170.190.154"]
 
 
 # Application definition
@@ -111,13 +113,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Bangkok'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block submenu_create_supplier %}active{% endblock %}
+{% block menu_supplier %}active{% endblock %}
+{% block body_block %}
+<link href="{% static 'css/customer.css' %}" rel="stylesheet">
+
+<style>
+
+.a {
+  position: absolute;
+  left: 4%;
+  top: 10%;
+  z-index: 1;
+}
+
+</style>
+
+<div class="a">
+    <a href="{% url 'staff:staff_list' %}"><button type="button" id="empolyee" class="btn btn-primary" id="load" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Processing">BACK</button></a>
+</div>
+<br><br><br>
+<div id="form-main">
+  <div id="form-div">
+    <form class="form" action="{% url 'staff:staff_add' %}" method="post" autocomplete="off">
+        <div class="form-group">
+        <p class="name" style="font-size: 40px; text-align:center; color:#fff;">
+          <span>เพิ่มข้อมูลStaff</span>
+        </p>
+      {% csrf_token %}
+      <p class="name">
+        <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder=" ชื่อ - สกุล | Name" id="name" required />
+      </p>
+
+      <p class="Tel">
+        <input name="phone" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="เบอร์โทรศัพท์ | Tel" id="tele" required />
+      </p>
+
+      <p class="email">
+        <input name="email" type="text" class="validate[required,custom[email]] feedback-input" id="email" placeholder="อีเมล์ | Email" required />
+      </p>
+
+      <div class="submit">
+        <input class="button-blue" type="submit"/>
+        <div class="ease"></div>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

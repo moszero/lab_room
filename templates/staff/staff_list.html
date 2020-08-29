@@ -1,0 +1,218 @@
+{% extends 'base/staff_base.html' %}
+{% load static %}
+{% block body2_block %}
+
+<style>
+    .max_width_high{
+        max-width: 150px;
+        min-width: 150px;
+    }
+    .max_width_mid{
+        max-width: 100px;
+        min-width: 100px;
+    }
+    .max_width_low{
+        max-width: 80px;
+        min-width: 80px;
+    }
+    /* table tr td{
+        border: 1px solid #000;
+    } */
+
+    table {
+border-spacing: 1;
+border-collapse: collapse;
+background: white;
+border-radius: 6px;
+overflow: hidden;
+width: 100%;
+margin: 0 auto;
+position: relative;
+}
+table * {
+position: relative;
+}
+table td, table th {
+padding-left: 8px;
+}
+table thead tr {
+background: #FFED86;
+font-size: 16px;
+}
+table tbody tr {
+border-bottom: 1px solid #E3F1D5;
+}
+table tbody tr:last-child {
+border: 0;
+}
+table td, table th {
+text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+
+    .max_width_high, .max_width_mid, .max_width_low{
+        max-width: 100%;
+        min-width: 100%;
+    }
+
+    .text-right{
+        text-align: left!important;
+    }
+
+    .table td{
+        padding: 0rem;
+    }
+
+    table {
+    display: block;
+    }
+
+    table > *, table tr, table td, table th {
+    display: block;
+    text-align: left;
+    }
+
+    table thead {
+    display: none;
+    }
+
+    table tbody tr {
+    border-bottom: 10px solid #E3F1D5;
+    height: auto;
+    padding: 8px 0;
+    }
+
+    table tbody tr td {
+    padding-left: 45%;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    margin:0px;
+    }
+
+    table tbody tr td:last-child {
+    margin-bottom: 0;
+    }
+
+    table tbody tr td:before {
+    position: initial;
+    font-weight: 700;
+    width: 40%;
+    left: 10px;
+    top: -20px;
+    }
+
+    table tbody tr td:nth-child(1):before {
+    content: "ชื่อ : ";
+    }
+    /* table tbody tr td:nth-child(1) {
+    display:none;
+    } */
+    /* table tbody tr td:nth-child(1) {
+    margin:0px;
+    } */
+
+    table tbody tr td:nth-child(2):before {
+    content: "เบอร์โทรศัพท์ : ";
+    }
+    table tbody tr td:nth-child(3):before {
+    content: "อีเมล์ : ";
+    }
+    table tbody tr td:nth-child(4):before {
+    content: "Date Joined : ";
+    }
+    table tbody tr td:nth-child(5):before {
+    content: "Actions : ";
+    }
+    table tfoot{
+        display:none;
+    }
+}
+
+</style>
+
+<body id="page-top">
+    <div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <div class="container-fluid">
+                    <br>
+
+                    <div class="card shadow">
+                        <div class="card-header py-3" style="height:60px">
+                            <span class="text-primary m-0 font-weight-bold"><i class="fas fa-user"></i> ข้อมูล Staff : </span>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table dataTable my-0 table-hover dtBasicExample" id="dataTable">
+                                    <thead>
+                                        <tr class="table-active">
+                                            <th class="max_width_high"><i class="fa fa-user"></i>&nbsp;ชื่อ</th>
+                                            <th class="max_width_low"><i class="fas fa-phone"></i>&nbsp;เบอร์โทรศัพท์</th>
+                                            <th class="max_width_mid"><i class="fas fa-at"></i>&nbsp;อีเมล์</th>
+                                            <th class="max_width_mid"><i class="fas fa-calendar-day"></i>&nbsp;Date Joined</th>
+                                            <th class="max_width_mid">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="invoice-table-body" id="Tablesort">
+                                        {% for item in object_list %}
+                                            <tr>
+                                                <td>{{ item.name }}</td>
+                                                <td>{{ item.phone }}</td>
+                                                <td>{{ item.email }}</td>
+                                                <td>{{ item.created_at }}</td>
+                                                <td>
+                                                    <a href="{% url 'staff:staff_detail' pk=item.id %}"><button class="btn btn-info btn-xs"><i class="fa fa-search"></i></button></a>
+                                                    <a href="{% url 'staff:staff_update' pk=item.id %}"><button class="btn btn-success btn-xs"><i class="fa fa-edit"></i></button></a>
+                                                    <a href="{% url 'index' %}" onclick="return confirm('Are you sure?')"><button class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button></a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr class="table-active">
+                                            <td class="max_width_high"><i class="fa fa-user"></i>&nbsp;ชื่อ</td>
+                                            <td class="max_width_low"><i class="fas fa-phone"></i>&nbsp;เบอร์โทรศัพท์</td>
+                                            <td class="max_width_mid"><i class="fas fa-at"></i>&nbsp;อีเมล์</td>
+                                            <td class="max_width_mid"><i class="fas fa-calendar-day"></i>&nbsp;Date Joined</td>
+                                            <td class="max_width_mid">Action</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div>
+        <script>
+            $(document).ready(function(){
+              $(".search-invoice").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $(".invoice-table-body tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+              });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('.dtBasicExample').DataTable();
+        });
+        </script>
+        <script>
+            function deleteFunction(e) {
+                if(!confirm("Are you sure you want to delete?")){
+                    e.preventDefault();
+                }else{
+                    $('.delete').submit();
+                }
+            }
+        </script>
+
+</body>
+
+
+
+
+{% endblock %}

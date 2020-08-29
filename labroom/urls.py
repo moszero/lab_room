@@ -19,10 +19,20 @@ from app_main import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.conf.urls import url
+import notifications.urls
+
+from app_main.views import (make_notification, mark_all_as_read, mark_all_as_unread)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index, name='index'),
     path('main/', include(('app_main.urls','main'),namespace='main')),
+    path('staff/',include(('app_staff.urls','staff'), namespace='staff')),
+    url('^inbox/notifications/', include(notifications.urls, namespace='notification')),
+    path('test_make/', make_notification),
+    path('mark_all_as_read/', mark_all_as_read),
+    path('mark_all_as_unread/', mark_all_as_unread),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

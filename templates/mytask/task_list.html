@@ -7,7 +7,7 @@
 <link href="{% static 'assets/css/style.bundle.css' %}" rel="stylesheet" type="text/css"/>
 
 <body>
-
+    <a href="{% url 'index' %}"><button type="button" class="btn btn-primary"  id="back_button" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Processing"><i class="fas fa-arrow-left"></i><br>Back</button></a>
     <h1>hello</h1>
     <div id="wrapper">
         <div class="d-flex flex-column" id="content-wrapper">
@@ -42,7 +42,7 @@
                                     </thead>
                                     <tbody class="invoice-table-body" id="Tablesort">
                                         {% for item in data %}
-                                        <tr>
+                                        <tr style="cursor: pointer;" onclick="window.location.href='{% url 'main:TaskDetailView' task_id=item.id %}';">
                                             <td class="max_width_high">{{ item.name }}</td>
                                             <td class="max_width_high">{{ item.surname }}</td>
                                             <td class="max_width_high">{{ item.business_name }}</td>

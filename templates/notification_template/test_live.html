@@ -1,0 +1,51 @@
+{% load static notifications_tags %}
+{% load custom_tags %}
+
+<script src="{% static 'notifications/notify.js' %}" type="text/javascript"></script>
+<script src="{% static 'notifications/live-test.js' %}" type="text/javascript"></script>
+{% register_notify_callbacks callbacks='fill_notification_list,fill_notification_badge' fetch=20 refresh_period=5 %}
+
+There are this many notifications pending: {% live_notify_badge %}
+
+<button onclick='make_notification()'>Make a notification</button>
+<button onclick='mark_all_as_read()'>mark_all_as_read</button>
+<button onclick='mark_all_as_unread()'>mark_all_as_unread</button>
+<br>
+<select class="form-control" id="i_id_wood_select">
+    <option value=""></option>
+    {% for item in all_user %}
+    <option value="{{ item }}">{{ item }}</option>
+    {% endfor %}
+</select>
+<button onclick='noti("เรียก");'>เรียก</button>
+<button onclick='noti("ชวนกินข้าว");'>ชวนกินข้าว</button>
+<button onclick='noti("ชวนเล่นเกม");'>ชวนเล่นเกม</button>
+{% live_notify_list %}
+
+--------------------
+<br>
+{% pd_live_notify_list %}
+
+<button class='live_notify_list'></button>
+
+
+
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+
+<script type="text/javascript">
+    function noti(text) {
+        var x = $('#i_id_wood_select').val();
+        $.post("{% url 'main:noti' %}", {
+            target: x,
+            text: text,
+        }, function(result, status) {
+            if (result.error != '') {
+                alert(result.error)
+                return
+            }
+        }).fail(function(xhr, status, errors) {
+            alert('Something is wrong! please check all fields and try again');
+        });
+    }
+</script>

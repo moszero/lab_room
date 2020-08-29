@@ -1,0 +1,67 @@
+{% extends "base_only_top.html" %}
+{% load static %}
+{% block body_block %}
+
+<head>
+    <style>
+        .errorlist{
+            display: inline-block;
+            color: red;
+            font-size: smaller;
+            float: right;
+        }
+        .error-alert{
+            text-align: center;
+            padding-bottom: 10px;
+            font-size: xx-large;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+<div id="login-page">
+    <br><br>
+    <a href="{% url 'staff:staff_login' %}"><button type="button" class="btn btn-primary"  id="back_button" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Processing">BACK</button></a>
+    <div class="container">
+
+        <form class="form-login" method="post" action="{% url 'staff:staff_register' %}">
+            <h2 class="form-login-heading">Registration Form</h2>
+            <div class="login-wrap">
+                {% if form.errors or form.non_field_errors %}
+                    <div class="error-alert">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                {% endif %}
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                    <div>
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+                <h5>Register yourself to use Ledger Free!</h5>
+                <input type="text" class="form-control" placeholder="Username" name="username" value="{{ username }}" autofocus>
+                {% if form.errors %}
+                    {{ form.errors.username }}
+                {% endif %}
+                <br>
+                <input type="password" class="form-control" name="password1" placeholder="Password" value="{{ password1 }}">
+                {% if form.errors %}
+                    {{ form.errors.password1  }}
+                {% endif %}
+                <br>
+                <input type="password" class="form-control" name="password2" placeholder="Confirm Password" value="{{ password2 }}">
+                {% if form.errors %}
+                    {{ form.errors.password2  }}
+                {% endif %}
+                <br>
+                <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-lock"></i> Register</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+</body>
+
+{% endblock %}

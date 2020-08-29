@@ -1,0 +1,142 @@
+{% extends "base_only_top.html" %}
+{% load static %}
+{% block body_block %}
+
+<head>
+    <style>
+        .errorlist{
+            display: inline-block;
+            color: red;
+            font-size: smaller;
+            float: right;
+        }
+        .error-alert{
+            text-align: center;
+            padding-bottom: 10px;
+            font-size: xx-large;
+            color: red;
+        }
+        .heading-text{
+            margin: 0px;
+            padding: 20px;
+            background: #295D84;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            text-align: center;
+            color: #fff;
+            font-weight: 100;
+        }
+    </style>
+    <style media="screen">
+        .center {
+      margin: auto;
+    }
+    </style>
+</head>
+
+<body>
+<div id="login-page">
+    <a href="{% url 'index' %}"><button type="button" class="btn btn-primary"  id="back_button" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Processing"><i class="fas fa-arrow-left"></i><br>Back</button></a>
+    <br><br>
+
+    <div class="container">
+        <div class="row">
+            <!-- 2nd div-->
+            <div class="col-md-6 center">
+                <form class="form-login" method="post" action="{% url 'staff:staff_login' %}">
+                    <center><h1 class="form-login-heading">Sign in</h1></center>
+                    <br>
+                    <div class="login-wrap">
+                        {% if form.errors or form.non_field_errors %}
+                            <div class="error-alert">
+                                <i class="fa fa-warning pull-center"></i>
+                            </div>
+                        {% endif %}
+                        {% csrf_token %}
+                        {% if form.non_field_errors %}
+                            <div>
+                                {{ form.non_field_errors }}
+                            </div>
+                        {% endif %}
+                        <input type="text" class="form-control" placeholder="Username" name="username" autofocus>
+                        {% if form.errors %}
+                            {{ form.errors.username }}
+                        {% endif %}
+                        <br>
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                        {% if form.errors %}
+                            {{ form.errors.password  }}
+                        {% endif %}
+                                        <!-- <label class="checkbox">
+                                            <span class="pull-right">
+                                                <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
+                                            </span>
+                                        </label> -->
+                        {% if not config.demo %}
+                        <br>
+                            <label class="checkbox">
+                        <span class="pull-right">
+                           Not registered? <a href="{% url 'staff:staff_register' %}"> Join now</a>
+                        </span>
+                            </label>
+                        {% else %}
+                            <br>
+                        {% endif %}
+
+                        <button class="btn btn-primary btn-block button" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+                    </div>
+                    <br>
+                        <hr>
+                        <br>
+                        <table class="table table-striped table-advance table-hover table-bordered">
+                            <h3 style="text-align: center">Test Accounts</h3>
+                            <thead>
+                            <tr>
+                                <th>User Type</th>
+                                <th>Username</th>
+                                <th>Password</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>ledger_viewer</td>
+                                <td>postest</td>
+                                <td>aaaa1234</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<script type="text/javascript">
+document.addEventListener('keydown', function(e) {
+
+  if (e.ctrlKey && e.code === 'Backspace') {
+    document.getElementById("back_button").click();
+  }
+
+  else if (e.code === 'Backspace' && e.ctrlKey)  {
+    alert('2');
+  }
+
+  else if (e.code === 'ArrowRight') {
+    alert('3');
+  }
+
+  else if (e.code === 'ArrowDown') {
+    alert('4');
+  }
+});
+</script>
+
+
+</body>
+
+{% endblock %}

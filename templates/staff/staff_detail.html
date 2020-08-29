@@ -1,0 +1,54 @@
+{% extends 'base/staff_base.html' %}
+{% load static %}
+{% block body2_block %}
+<body id="page-top">
+    <div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <div class="container-fluid">
+                    <a href="{% url 'staff:staff_list' %}"><button type="button" id="empolyee" class="btn btn-primary mb-4" id="load" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Processing">ย้อนกลับ</button></a>
+                    <h3 class="text-dark mb-4">Profile - {{ object.name }}</h3>
+                    <div class="row mb-3">
+                        <div class="col">
+                        <form class="form" action="" method="post" autocomplete="off">
+                            {% csrf_token %}
+                            <div class="row" style="margin-bottom: 16px;">
+                                <div class="col">
+                                    <div class="card shadow mb-3">
+                                        <div class="card-header py-3">
+                                            <p class="text-primary m-0 font-weight-bold">ข้อมูล</p>
+                                        </div>
+                                        <div class="card-body">
+                                                <div class="form-row">
+                                                    <div class="col">
+                                                        <div class="form-group"><label for="username"><strong>ชื่อ</strong></label><input class="form-control" type="text" placeholder="ชื่อ | Name" name="name" value="{{ object.name }}" readonly></div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow">
+                                        <div class="card-header py-3">
+                                            <p class="text-primary m-0 font-weight-bold">ข้อมูลการติดต่อ</p>
+                                        </div>
+                                        <div class="card-body">
+                                                <div class="form-group"><label for="address"><strong>ที่อยู่</strong></label><input class="form-control" type="text" placeholder="ที่อยู่ | Address" name="address" value="{% if object.address %}{{ object.address }}{% else %}{% endif %}" readonly></div>
+                                                <div class="form-row">
+                                                    <div class="col-xl-6">
+                                                        <div class="form-group"><label for="city"><strong>เบอร์โทรศัพท์</strong><br></label><input class="form-control" type="text" placeholder="เบอร์โทรศัพท์ | Tel" name="phone" maxlength="10" value="{% if object.phone %}{{ object.phone }}{% else %}{% endif %}" readonly></div>
+                                                    </div>
+                                                    <div class="col-xl-6">
+                                                        <div class="form-group"><label for="country"><strong>อีเมล์</strong><br></label><input class="form-control" type="text" placeholder="อีเมล์ | Email" name="email" inputmode="email" value="{% if object.email %}{{ object.email }}{% else %}{% endif %}" readonly></div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div></div>
+
+</body>
+{% endblock %}

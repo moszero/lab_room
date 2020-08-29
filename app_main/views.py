@@ -5,6 +5,9 @@ from django.urls import reverse, reverse_lazy
 from django.utils import timezone
 from django.shortcuts import get_object_or_404, redirect
 
+from swapper import load_model
+Notification = load_model('notifications', 'Notification')
+
 from django.db.models import F
 
 from django.contrib.auth import forms as auth_forms
@@ -14,7 +17,7 @@ from django.contrib.auth import authenticate
 
 from django.contrib.auth.models import User
 
-from app_main.models import Notification
+from app_main.models import pd_Notification
 
 
 from django.contrib.auth.decorators import login_required
@@ -77,6 +80,36 @@ def mark_all_as_unread(request):
         return redirect(_next)
     return redirect('index')
 
+# def mark_as_read(request, slug=None):
+#     # notification_id = slug2id(slug)
+#     notification_id = int(slug)
+#
+#     notification = get_object_or_404(
+#         Notification, recipient=request.user, id=notification_id)
+#     notification.mark_as_read()
+#     print(123)
+#
+#     _next = request.GET.get('next')
+#
+#     if _next:
+#         return redirect(_next)
+#
+#     return redirect('main:live_tester')
+
+class mark_as_read(View):
+    def __init__(self, *args, **kwargs):
+        super(mark_as_read, self).__init__(*args, **kwargs)
+        self.customer = None
+
+    def post(self, request, *args, **kwargs):
+        id = self.request.POST.get('id')
+        notification_id = int(id)
+        notification = get_object_or_404(
+            Notification, recipient=request.user, id=notification_id)
+        notification.mark_as_read()
+        return JsonResponse({'error': ''})
+
+
 class noti(View):
     def __init__(self, *args, **kwargs):
         super(noti, self).__init__(*args, **kwargs)
@@ -94,13 +127,13 @@ class noti(View):
 
 class my_task(ListView):
     template_name = 'mytask/task_list.html'
-    model = Notification
+    model = pd_Notification
 
     def get_context_data(self, **kwargs):
         context = super(my_task, self).get_context_data(**kwargs)
 
         context.update({
-            'data': Notification.objects.all(),
+            'data': pd_Notification.objects.all(),
         })
 
         return context
@@ -115,11 +148,11 @@ def my_handler(sender, instance, created, **kwargs):
 
 def add_my_task(request):
     temp = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))
-    Notification.objects.create(name=temp)
+    pd_Notification.objects.create(name=temp)
     notify.send(user, recipient=user, verb='you reached level 10')
     return render(request,'index.html')
 
-# post_save.connect(my_handler, sender=Notification)
+# post_save.connect(my_handler, sender=pd_Notification)
 
 
 class TaskDetailView(TemplateView):
@@ -127,7 +160,7 @@ class TaskDetailView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(TaskDetailView, self).get_context_data(**kwargs)
-        task = Notification.objects.get(id=self.kwargs.get('task_id'))
+        task = pd_Notification.objects.get(id=self.kwargs.get('task_id'))
 
         context.update({
             'task': task,

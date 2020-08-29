@@ -10,6 +10,6 @@ class DatedModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
-class Notification(models.Model):
+class pd_Notification(models.Model):
     name = models.CharField(max_length=100, null=True, blank=True)
     surname = models.CharField(max_length=100, null=True, blank=True)

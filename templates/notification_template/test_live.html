@@ -1,10 +1,10 @@
 {% load static notifications_tags %}
-{% load custom_tags %}
 
 <script src="{% static 'notifications/notify.js' %}" type="text/javascript"></script>
 <script src="{% static 'notifications/live-test.js' %}" type="text/javascript"></script>
 {% register_notify_callbacks callbacks='fill_notification_list,fill_notification_badge' fetch=20 refresh_period=5 %}
 
+<a href="{% url 'index' %}"><button type="button" class="btn btn-primary"  id="back_button" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Processing"><i class="fas fa-arrow-left"></i><br>Back</button></a>
 There are this many notifications pending: {% live_notify_badge %}
 
 <button onclick='make_notification()'>Make a notification</button>
@@ -24,9 +24,7 @@ There are this many notifications pending: {% live_notify_badge %}
 
 --------------------
 <br>
-{% pd_live_notify_list %}
-
-<button class='live_notify_list'></button>
+<!-- <button class='live_notify_list'></button> -->
 
 
 

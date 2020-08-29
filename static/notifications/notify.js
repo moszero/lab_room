@@ -34,13 +34,30 @@ function fill_notification_list(data) {
             if(typeof item.timestamp !== 'undefined'){
                 message = message + " " + item.timestamp;
             }
-            return '<li>' + message + '</li>555';
+            if(typeof item.id !== 'undefined'){
+                message = message + " id:" + item.id;
+            }
+            // return '<li>' + message + '<button class="btn btn-sm btn-secondary float-right" role="button"  onclick="window.location.href = \'/mark-as-read/' + item.id + '/\';"><i class="fas fa-arrow-circle-left"></i>&nbsp;Read</button>' + '</li>';
+            return '<li>' + message + '<button class="btn btn-sm btn-secondary float-right" role="button"  onclick="mark_read(' + item.id + ');"><i class="fas fa-arrow-circle-left"></i>&nbsp;Read</button>' + '</li>';
         }).join('')
 
         for (var i = 0; i < menus.length; i++){
             menus[i].innerHTML = messages;
         }
     }
+}
+
+function mark_read(id) {
+    $.post("/main/mark-as-read/", {
+        id: id,
+    }, function(result, status) {
+        if (result.error != '') {
+            alert(result.error)
+            return
+        }
+    }).fail(function(xhr, status, errors) {
+        alert('Something is wrong! please check all fields and try again');
+    });
 }
 
 function register_notifier(func) {

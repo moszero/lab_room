@@ -1,6 +1,14 @@
 {% extends 'lab/lab1.html' %}
 {% load static %}
 {% block body_block %}
+
+<style media="screen">
+    .pd_css{
+        text-align: center;
+        border-bottom:1px solid #000;
+    }
+</style>
+
 <link href="{% static 'assets/plugins/custom/kanban/kanban.bundle.css' %}" rel="stylesheet" type="text/css"/>
 <!--begin::Notice-->
 <div class="alert alert-custom alert-white alert-shadow fade show gutter-b" role="alert">
@@ -27,6 +35,21 @@
     </div>
 </div>
 <!-- end::Notice -->
+
+<!--begin::Card-->
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <div class="card-title">
+            <h3 class="card-label">
+                Pudith
+            </h3>
+        </div>
+    </div>
+    <div class="card-body">
+        <div id="pudith"></div>
+    </div>
+</div>
+<!--end::Card-->
 
 <!--begin::Card-->
 <div class="card card-custom gutter-b">
@@ -98,4 +121,50 @@
 {% block script_block %}
 <script src="{% static 'assets/plugins/custom/kanban/kanban.bundle.js' %}"></script>
 <script src="{% static 'assets/js/pages/features/miscellaneous/kanban-board.js' %}"></script>
+<script type="text/javascript">
+var _demo1 = function() {
+    var kanban = new jKanban({
+        element: '#pudith',
+        gutter: '0',
+        widthBoard: '250px',
+        boards: [{
+                'id': '_inprocess',
+                'title': 'In Process',
+                'class': 'pd_css',
+                'item': [{
+                        'title': '<span class="font-weight-bold">You can drag me too</span>'
+                    },
+                    {
+                        'title': '<span class="font-weight-bold">Buy Milk</span>'
+                    }
+                ]
+            }, {
+                'id': '_working',
+                'title': 'Working',
+                'item': [{
+                        'title': '<span class="font-weight-bold">Do Something!</span>'
+                    },
+                    {
+                        'title': '<span class="font-weight-bold">Run?</span>'
+                    }
+                ]
+            }, {
+                'id': '_done',
+                'title': 'Done',
+                'item': [{
+                        'title': '<span class="font-weight-bold">All right</span>'
+                    },
+                    {
+                        'title': '<span class="font-weight-bold">Ok!</span>'
+                    }
+                ]
+            }
+        ]
+    });
+}
+jQuery(document).ready(function() {
+    _demo1();
+});
+
+</script>
 {% endblock %}

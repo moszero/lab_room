@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView,FormView,DeleteView,UpdateView, TemplateView, RedirectView
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse, reverse_lazy
 
 import json
@@ -83,6 +83,14 @@ class StaffLoginView(FormView):
         except AdminConfiguration.DoesNotExist:
             pass
         return context
+
+    def post(self, request, *args, **kwargs):
+        print(request.body)
+        items = json.loads(request)
+        print(items)
+        # user = form.get_user()
+        # auth_login(self.request, user)
+        return JsonResponse({'status': 'success'})
 
 class StaffLogoutView(RedirectView):
 

@@ -85,11 +85,21 @@ class StaffLoginView(FormView):
         return context
 
     def post(self, request, *args, **kwargs):
-        print(request.body)
-        items = json.loads(request)
-        print(items)
-        # user = form.get_user()
-        # auth_login(self.request, user)
+        # print(request.body)
+        temp = request.body.decode()
+        temp = temp.split('&')
+        keep_temp = {}
+        for i in temp:
+            i_temp = i.split('=')
+            key = i_temp[0]
+            value = i_temp[1]
+            keep_temp[key] = value
+        username = keep_temp['username']
+        password = keep_temp['password']
+        print(username)
+        print(password)
+        auth_user = authenticate(username=username, password=password)
+        auth_login(self.request, auth_user)
         return JsonResponse({'status': 'success'})
 
 class StaffLogoutView(RedirectView):

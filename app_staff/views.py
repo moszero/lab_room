@@ -3,6 +3,8 @@ from django.views.generic import ListView,FormView,DeleteView,UpdateView, Templa
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 
+import json
+
 from django.contrib.auth import forms as auth_forms
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
@@ -35,7 +37,7 @@ class staff_list(ListView):
 
 
 class StaffLoginView(FormView):
-    template_name = 'staff/login.html'
+    template_name = 'staff/login_new.html'
     form_class = auth_forms.AuthenticationForm
 
     def dispatch(self, request, *args, **kwargs):
@@ -53,12 +55,22 @@ class StaffLoginView(FormView):
         return super(StaffLoginView, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
+        # obj = form.save(commit=False)
+        # print(obj)
+        # print(obj.dict)
+        print(123)
+        print(form)
         user = form.get_user()
         auth_login(self.request, user)
 
         return HttpResponseRedirect(reverse('index'))
 
     def form_invalid(self, form):
+        # name = json.loads(form)
+        # for key, value in self.items() :
+        #     print (key, value)
+        print(456)
+        print(form)
         return super(StaffLoginView, self).form_invalid(form)
 
     def get_context_data(self, **kwargs):

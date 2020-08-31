@@ -245,10 +245,11 @@
     				// Form Validation & Ajax Submission: https://formvalidation.io/guide/examples/using-ajax-to-submit-the-form
 
     		        FormValidation.utils.fetch(formSubmitUrl, {
-    		            method: 'post',
+    		            method: 'POST',
     					dataType: 'json',
     		            params: {
-    		                username: form.querySelector('[name="username"]').value,
+                            csrfmiddlewaretoken: form.querySelector('[name="csrfmiddlewaretoken"]').value,
+                            username: form.querySelector('[name="username"]').value,
     		                password: form.querySelector('[name="password"]').value,
     		            },
     		        }).then(function(response) { // Return valid JSON
@@ -266,6 +267,7 @@
     							}
     			            }).then(function() {
     							KTUtil.scrollTop();
+                                window.location.href = "{% url 'index' %}"
     						});
     					} else {
     						Swal.fire({

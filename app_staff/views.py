@@ -62,8 +62,9 @@ class StaffLoginView(FormView):
         print(form)
         user = form.get_user()
         auth_login(self.request, user)
-
-        return HttpResponseRedirect(reverse('index'))
+        print('pass')
+        return JsonResponse({'status': 'success'})
+        # return HttpResponseRedirect(reverse('index'))
 
     def form_invalid(self, form):
         # name = json.loads(form)
@@ -71,7 +72,9 @@ class StaffLoginView(FormView):
         #     print (key, value)
         print(456)
         print(form)
-        return super(StaffLoginView, self).form_invalid(form)
+        return JsonResponse({'status': ''})
+
+        # return super(StaffLoginView, self).form_invalid(form)
 
     def get_context_data(self, **kwargs):
         context = super(StaffLoginView, self).get_context_data(**kwargs)
@@ -84,23 +87,23 @@ class StaffLoginView(FormView):
             pass
         return context
 
-    def post(self, request, *args, **kwargs):
-        # print(request.body)
-        temp = request.body.decode()
-        temp = temp.split('&')
-        keep_temp = {}
-        for i in temp:
-            i_temp = i.split('=')
-            key = i_temp[0]
-            value = i_temp[1]
-            keep_temp[key] = value
-        username = keep_temp['username']
-        password = keep_temp['password']
-        print(username)
-        print(password)
-        auth_user = authenticate(username=username, password=password)
-        auth_login(self.request, auth_user)
-        return JsonResponse({'status': 'success'})
+    # def post(self, request, *args, **kwargs):
+    #     # print(request.body)
+    #     temp = request.body.decode()
+    #     temp = temp.split('&')
+    #     keep_temp = {}
+    #     for i in temp:
+    #         i_temp = i.split('=')
+    #         key = i_temp[0]
+    #         value = i_temp[1]
+    #         keep_temp[key] = value
+    #     username = keep_temp['username']
+    #     password = keep_temp['password']
+    #     print(username)
+    #     print(password)
+    #     auth_user = authenticate(username=username, password=password)
+    #     auth_login(self.request, auth_user)
+    #     return JsonResponse({'status': 'success'})
 
 class StaffLogoutView(RedirectView):
 

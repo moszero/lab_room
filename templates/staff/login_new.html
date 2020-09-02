@@ -258,10 +258,10 @@
 
     					if (response && typeof response === 'object' && response.status && response.status == 'success') {
     						Swal.fire({
-    			                text: "All is cool! Now you submit this form",
+    			                text: "Login สำเร็จ",
     			                icon: "success",
     			                buttonsStyling: false,
-    							confirmButtonText: "Ok, got it!",
+    							confirmButtonText: "Ok!",
     							customClass: {
     								confirmButton: "btn font-weight-bold btn-light-primary"
     							}
@@ -271,12 +271,12 @@
     						});
     					} else {
     						Swal.fire({
-    			                text: "Sorry, something went wrong, please try again.",
+    			                text: "Username/Password ผิดพลาด กรุณาลองอีกครั้ง",
     			                icon: "error",
     			                buttonsStyling: false,
-    							confirmButtonText: "Ok, got it!",
+    							confirmButtonText: "Ok!",
     							customClass: {
-    								confirmButton: "btn font-weight-bold btn-light-primary"
+    								confirmButton: "btn font-weight-bold btn-light-danger"
     							}
     			            }).then(function() {
     							KTUtil.scrollTop();

@@ -116,7 +116,7 @@ class StaffLogoutView(RedirectView):
 
 class StaffRegisterView(FormView):
     form_class = auth_forms.UserCreationForm
-    template_name = 'staff/register.html'
+    template_name = 'staff/register_new.html'
 
     def dispatch(self, request, *args, **kwargs):
         if self.request.user.is_authenticated:

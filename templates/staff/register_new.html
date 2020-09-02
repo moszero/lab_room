@@ -1,0 +1,657 @@
+
+{% load static %}
+<link href="{% static 'assets/css/pages/login/login-4.css' %}" rel="stylesheet" type="text/css"/>
+
+<!--begin::Global Theme Styles(used by all pages)-->
+<link href="{% static 'assets/plugins/global/plugins.bundle.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'assets/plugins/custom/prismjs/prismjs.bundle.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'assets/css/style.bundle.min.css' %}" rel="stylesheet" type="text/css"/>
+
+<!--end::Global Theme Styles-->
+
+<!--begin::Layout Themes(used by all pages)-->
+<link href="{% static 'assets/css/themes/layout/header/base/dark.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'assets/css/themes/layout/header/menu/dark.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'assets/css/themes/layout/brand/light.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'assets/css/themes/layout/aside/dark.css' %}" rel="stylesheet" type="text/css"/>
+
+<!--end::Layout Themes-->
+
+<!--begin::Body-->
+
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+
+    <!--begin::Main-->
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Login-->
+        <div class="login login-4 wizard d-flex flex-column flex-lg-row flex-column-fluid wizard" id="kt_login">
+            <!--begin::Content-->
+            <div class="login-container d-flex flex-center flex-row flex-row-fluid order-2 order-lg-1 flex-row-fluid bg-white py-lg-0 pb-lg-0 pt-15 pb-12">
+                <!--begin::Container-->
+                <div class="login-content login-content-signup d-flex flex-column">
+                    <!--begin::Aside Top-->
+                    <div class="d-flex flex-column-auto flex-column px-10">
+                        <!--begin::Aside header-->
+                        <a href="#" class="login-logo pb-lg-4 pb-10">
+                            <img src="/media/logos/logo-4.png" class="max-h-70px" alt="" />
+                        </a>
+                        <!--end::Aside header-->
+
+                        <!--begin: Wizard Nav-->
+                        <div class="wizard-nav pt-5 pt-lg-15 pb-10">
+                            <!--begin::Wizard Steps-->
+                            <div class="wizard-steps d-flex flex-column flex-sm-row">
+                                <!--begin::Wizard Step 1 Nav-->
+                                <div class="wizard-step flex-grow-1 flex-basis-0" data-wizard-type="step" data-wizard-state="current">
+                                    <div class="wizard-wrapper pr-7">
+                                        <div class="wizard-icon">
+                                            <i class="wizard-check ki ki-check"></i>
+                                            <span class="wizard-number">1</span>
+                                        </div>
+                                        <div class="wizard-label">
+                                            <h3 class="wizard-title">
+                                                Account
+                                            </h3>
+                                            <div class="wizard-desc">
+                                                Account details
+                                            </div>
+                                        </div>
+                                        <!-- <span class="svg-icon pl-6">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                                    <rect fill="#000000" opacity="0.3" transform="translate(8.500000, 12.000000) rotate(-90.000000) translate(-8.500000, -12.000000) " x="7.5" y="7.5" width="2" height="9" rx="1" />
+                                                    <path
+                                                        d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z"
+                                                        fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997) " />
+                                                </g>
+                                            </svg>
+                                        </span> -->
+                                    </div>
+                                </div>
+                                <!--end::Wizard Step 1 Nav-->
+
+                                <!-- begin::Wizard Step 2 Nav-->
+                                <!-- <div class="wizard-step flex-grow-1 flex-basis-0" data-wizard-type="step">
+                                    <div class="wizard-wrapper pr-7">
+                                        <div class="wizard-icon">
+                                            <i class="wizard-check ki ki-check"></i>
+                                            <span class="wizard-number">2</span>
+                                        </div>
+                                        <div class="wizard-label">
+                                            <h3 class="wizard-title">
+                                                Address
+                                            </h3>
+                                            <div class="wizard-desc">
+                                                Residential address
+                                            </div>
+                                        </div>
+                                        <span class="svg-icon pl-6">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                                    <rect fill="#000000" opacity="0.3" transform="translate(8.500000, 12.000000) rotate(-90.000000) translate(-8.500000, -12.000000) " x="7.5" y="7.5" width="2" height="9" rx="1" />
+                                                    <path
+                                                        d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z"
+                                                        fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997) " />
+                                                </g>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div> -->
+                                <!--end::Wizard Step 2 Nav-->
+
+                                <!--begin::Wizard Step 3 Nav-->
+                                <!-- <div class="wizard-step flex-grow-1 flex-basis-0" data-wizard-type="step">
+                                    <div class="wizard-wrapper pr-7">
+                                        <div class="wizard-icon">
+                                            <i class="wizard-check ki ki-check"></i>
+                                            <span class="wizard-number">2</span>
+                                        </div>
+                                        <div class="wizard-label">
+                                            <h3 class="wizard-title">
+                                                Complete
+                                            </h3>
+                                            <div class="wizard-desc">
+                                                Submit form
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <!--end::Wizard Step 3 Nav -->
+                            </div>
+                            <!--end::Wizard Steps-->
+                        </div>
+                        <!--end: Wizard Nav-->
+                    </div>
+                    <!--end::Aside Top-->
+
+                    <!--begin::Signin-->
+                    <div class="login-form">
+                        <!--begin::Form-->
+                        <form class="form px-10" novalidate="novalidate" method="post" action="{% url 'staff:staff_register' %}" id="kt_login_signup_form">
+                            {% csrf_token %}
+                            <!--begin: Wizard Step 1-->
+                            <div class=" " data-wizard-type="step-content" data-wizard-state="current">
+                                <!--begin::Title-->
+                                <div class="pb-10 pb-lg-12">
+                                    <h3 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Create Account</h3>
+                                    <div class="text-muted font-weight-bold font-size-h4">
+                                        Already have an Account ?
+                                        <a href="custom/pages/login/login-4/signin.html" class="text-primary font-weight-bolder">Sign In</a>
+                                    </div>
+                                </div>
+                                <!--begin::Title-->
+
+                                <!--begin::Form Group-->
+                                <div class="form-group">
+                                    <label class="font-size-h6 font-weight-bolder text-dark">Username</label>
+                                    <input type="text" class="form-control form-control-solid h-auto py-7 px-6 border-0 rounded-lg font-size-h6" name="username" placeholder="Username" value="{{ username }}" />
+                                </div>
+                                {% if form.errors %}
+                                    {{ form.errors.username }}
+                                {% endif %}
+
+                                <!--end::Form Group-->
+
+                                <!--begin::Form Group-->
+                                <div class="form-group">
+                                    <label class="font-size-h6 font-weight-bolder text-dark">Password</label>
+                                    <input type="password" class="form-control form-control-solid h-auto py-7 px-6 border-0 rounded-lg font-size-h6" name="password1" placeholder="Password" value="{{ password1 }}" />
+                                </div>
+                                {% if form.errors %}
+                                {{ form.errors.password1 }}
+                                {% endif %}
+
+                                <!--end::Form Group-->
+
+                                <!--begin::Form Group-->
+                                <div class="form-group">
+                                    <label class="font-size-h6 font-weight-bolder text-dark">Password</label>
+                                    <input type="password" class="form-control form-control-solid h-auto py-7 px-6 border-0 rounded-lg font-size-h6" name="password2" placeholder="Confirm Password" value="{{ password2 }}" />
+                                </div>
+                                {% if form.errors %}
+                                {{ form.errors.password2 }}
+                                {% endif %}
+                                <!--end::Form Group-->
+                            </div>
+                            <!--end: Wizard Step 1-->
+
+                            <!--begin: Wizard Actions-->
+                            <div class="d-flex justify-content-between pt-7">
+                                <div class="mr-2">
+                                    <!-- <button type="button" class="btn btn-light-primary font-weight-bolder font-size-h6 pr-8 pl-6 py-4 my-3 mr-3" data-wizard-type="action-prev">
+                                        <span class="svg-icon svg-icon-md mr-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24"
+                                                version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                                    <rect fill="#000000" opacity="0.3" transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) " x="14" y="7" width="2" height="10" rx="1" />
+                                                    <path
+                                                        d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z"
+                                                        fill="#000000" fill-rule="nonzero" transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) " />
+                                                </g>
+                                            </svg>
+                                        </span> Previous
+                                    </button> -->
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-primary font-weight-bolder font-size-h6 pl-8 pr-4 py-4 my-3" data-wizard-type="action-submit" type="submit" id="kt_login_signup_form_submit_button">
+                                        Submit
+                                        <span class="svg-icon svg-icon-md ml-2">
+                                            <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Right-2.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24"
+                                                version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                                    <rect fill="#000000" opacity="0.3" transform="translate(8.500000, 12.000000) rotate(-90.000000) translate(-8.500000, -12.000000) " x="7.5" y="7.5" width="2" height="9" rx="1" />
+                                                    <path
+                                                        d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z"
+                                                        fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997) " />
+                                                </g>
+                                            </svg>
+                                            <!--end::Svg Icon--></span> </button>
+
+                                    <button type="button" class="btn btn-primary font-weight-bolder font-size-h6 pl-8 pr-4 py-4 my-3" data-wizard-type="action-next">
+                                        Next
+                                        <span class="svg-icon svg-icon-md ml-2">
+                                            <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Right-2.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24"
+                                                version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                                    <rect fill="#000000" opacity="0.3" transform="translate(8.500000, 12.000000) rotate(-90.000000) translate(-8.500000, -12.000000) " x="7.5" y="7.5" width="2" height="9" rx="1" />
+                                                    <path
+                                                        d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z"
+                                                        fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997) " />
+                                                </g>
+                                            </svg>
+                                            <!--end::Svg Icon--></span> </button>
+                                </div>
+                            </div>
+                            <!--end: Wizard Actions-->
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Signin-->
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--begin::Content-->
+
+            <!--begin::Aside-->
+            <div class="login-aside order-1 order-lg-2 bgi-no-repeat bgi-position-x-right">
+                <div class="login-conteiner bgi-no-repeat bgi-position-x-right bgi-position-y-bottom" style="background-image: url(/media/svg/illustrations/login-visual-4.svg);">
+                    <!--begin::Aside title-->
+                    <h3 class="pt-lg-40 pl-lg-20 pb-lg-0 pl-10 py-20 m-0 d-flex justify-content-lg-start font-weight-boldest display5 display1-lg text-white">
+                        We Got<br />
+                        A Surprise<br />
+                        For You
+                    </h3>
+                    <!--end::Aside title-->
+                </div>
+            </div>
+            <!--end::Aside-->
+        </div>
+        <!--end::Login-->
+    </div>
+    <!--end::Main-->
+
+
+    <script>
+        var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+    </script>
+    <!--begin::Global Config(global config for global JS scripts)-->
+    <script>
+        var KTAppSettings = {
+            "breakpoints": {
+                "sm": 576,
+                "md": 768,
+                "lg": 992,
+                "xl": 1200,
+                "xxl": 1400
+            },
+            "colors": {
+                "theme": {
+                    "base": {
+                        "white": "#ffffff",
+                        "primary": "#3699FF",
+                        "secondary": "#E5EAEE",
+                        "success": "#1BC5BD",
+                        "info": "#8950FC",
+                        "warning": "#FFA800",
+                        "danger": "#F64E60",
+                        "light": "#E4E6EF",
+                        "dark": "#181C32"
+                    },
+                    "light": {
+                        "white": "#ffffff",
+                        "primary": "#E1F0FF",
+                        "secondary": "#EBEDF3",
+                        "success": "#C9F7F5",
+                        "info": "#EEE5FF",
+                        "warning": "#FFF4DE",
+                        "danger": "#FFE2E5",
+                        "light": "#F3F6F9",
+                        "dark": "#D6D6E0"
+                    },
+                    "inverse": {
+                        "white": "#ffffff",
+                        "primary": "#ffffff",
+                        "secondary": "#3F4254",
+                        "success": "#ffffff",
+                        "info": "#ffffff",
+                        "warning": "#ffffff",
+                        "danger": "#ffffff",
+                        "light": "#464E5F",
+                        "dark": "#ffffff"
+                    }
+                },
+                "gray": {
+                    "gray-100": "#F3F6F9",
+                    "gray-200": "#EBEDF3",
+                    "gray-300": "#E4E6EF",
+                    "gray-400": "#D1D3E0",
+                    "gray-500": "#B5B5C3",
+                    "gray-600": "#7E8299",
+                    "gray-700": "#5E6278",
+                    "gray-800": "#3F4254",
+                    "gray-900": "#181C32"
+                }
+            },
+            "font-family": "Poppins"
+        };
+    </script>
+
+    <script src="{% static 'assets/plugins/global/plugins.bundle.js' %}"></script>
+    <script src="{% static 'assets/plugins/custom/prismjs/prismjs.bundle.js' %}"></script>
+    <script src="{% static 'assets/js/scripts.bundle.min.js' %}"></script>
+
+    <!-- <script src="{% static 'assets/js/pages/custom/login/login-4.js' %}"></script> -->
+
+    <script type="text/javascript">
+        var _buttonSpinnerClasses = 'spinner spinner-right spinner-white pr-15';
+
+    	// var _handleFormSignin = function() {
+    	// 	var form = KTUtil.getById('pd_login_singin_form');
+    	// 	var formSubmitUrl = KTUtil.attr(form, 'action');
+    	// 	var formSubmitButton = KTUtil.getById('pd_login_singin_form_submit_button');
+        //
+    	// 	if (!form) {
+    	// 		return;
+    	// 	}
+        //
+    	// 	FormValidation
+    	// 	    .formValidation(
+    	// 	        form,
+    	// 	        {
+    	// 	            fields: {
+    	// 					username: {
+    	// 						validators: {
+    	// 							notEmpty: {
+    	// 								message: 'กรุณาใส่ Username'
+    	// 							}
+    	// 						}
+    	// 					},
+    	// 					password: {
+    	// 						validators: {
+    	// 							notEmpty: {
+    	// 								message: 'กรุณาใส่ Password'
+    	// 							}
+    	// 						}
+    	// 					}
+    	// 	            },
+    	// 	            plugins: {
+    	// 					trigger: new FormValidation.plugins.Trigger(),
+    	// 					submitButton: new FormValidation.plugins.SubmitButton(),
+    	//             		// defaultSubmit: new FormValidation.plugins.DefaultSubmit(), // Uncomment this line to enable normal button submit after form validation
+    	// 					bootstrap: new FormValidation.plugins.Bootstrap({
+    	// 					//	eleInvalidClass: '', // Repace with uncomment to hide bootstrap validation icons
+    	// 					//	eleValidClass: '',   // Repace with uncomment to hide bootstrap validation icons
+    	// 					})
+    	// 	            }
+    	// 	        }
+    	// 	    )
+    	// 	    .on('core.form.valid', function() {
+    	// 			// Show loading state on button
+    	// 			KTUtil.btnWait(formSubmitButton, _buttonSpinnerClasses, "Please wait");
+        //
+    	// 			// Simulate Ajax request
+    	// 			setTimeout(function() {
+    	// 				KTUtil.btnRelease(formSubmitButton);
+    	// 			}, 2000);
+        //
+    	// 			// Form Validation & Ajax Submission: https://formvalidation.io/guide/examples/using-ajax-to-submit-the-form
+        //
+    	// 	        FormValidation.utils.fetch(formSubmitUrl, {
+    	// 	            method: 'POST',
+    	// 				dataType: 'json',
+    	// 	            params: {
+        //                     csrfmiddlewaretoken: form.querySelector('[name="csrfmiddlewaretoken"]').value,
+        //                     username: form.querySelector('[name="username"]').value,
+    	// 	                password: form.querySelector('[name="password"]').value,
+    	// 	            },
+    	// 	        }).then(function(response) { // Return valid JSON
+    	// 				// Release button
+    	// 				KTUtil.btnRelease(formSubmitButton);
+        //
+    	// 				if (response && typeof response === 'object' && response.status && response.status == 'success') {
+    	// 					Swal.fire({
+    	// 		                text: "Login สำเร็จ",
+    	// 		                icon: "success",
+    	// 		                buttonsStyling: false,
+    	// 						confirmButtonText: "Ok!",
+    	// 						customClass: {
+    	// 							confirmButton: "btn font-weight-bold btn-light-primary"
+    	// 						}
+    	// 		            }).then(function() {
+    	// 						KTUtil.scrollTop();
+        //                         window.location.href = "{% url 'index' %}"
+    	// 					});
+    	// 				} else {
+    	// 					Swal.fire({
+    	// 		                text: "Username/Password ผิดพลาด กรุณาลองอีกครั้ง",
+    	// 		                icon: "error",
+    	// 		                buttonsStyling: false,
+    	// 						confirmButtonText: "Ok!",
+    	// 						customClass: {
+    	// 							confirmButton: "btn font-weight-bold btn-light-danger"
+    	// 						}
+    	// 		            }).then(function() {
+    	// 						KTUtil.scrollTop();
+    	// 					});
+    	// 				}
+    	// 	        });
+        //
+    	// 	    })
+    	// 		.on('core.form.invalid', function() {
+    	// 			Swal.fire({
+    	// 				text: "ตรวจพบความผิดพลาด โปรดลองอีกครั้ง",
+    	// 				icon: "error",
+    	// 				buttonsStyling: false,
+    	// 				confirmButtonText: "Ok!",
+    	// 				customClass: {
+    	// 					confirmButton: "btn font-weight-bold btn-light-danger"
+    	// 				}
+    	// 			}).then(function() {
+    	// 				KTUtil.scrollTop();
+    	// 			});
+    	// 	    });
+        // }
+
+        var _handleFormSignup = function() {
+            // Base elements
+            var wizardEl = KTUtil.getById('kt_login');
+            var form = KTUtil.getById('kt_login_signup_form');
+            var wizardObj;
+            var validations = [];
+
+            if (!form) {
+                return;
+            }
+
+            // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
+            // Step 1
+            validations.push(FormValidation.formValidation(
+                form,
+                {
+                    fields: {
+    					username: {
+    						validators: {
+    							notEmpty: {
+    								message: 'Username is required'
+    							}
+    						}
+    					},
+                        password1: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'The password is required'
+                                }
+                            }
+                        },
+                        password2: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'The password confirmation is required'
+                                },
+                                identical: {
+                                    compare: function() {
+                                        return form.querySelector('[name="password1"]').value;
+                                    },
+                                    message: 'The password and its confirm are not the same'
+                                }
+                            }
+                        },
+    				},
+                    plugins: {
+                        trigger: new FormValidation.plugins.Trigger(),
+                        // Bootstrap Framework Integration
+                        bootstrap: new FormValidation.plugins.Bootstrap({
+                            //eleInvalidClass: '',
+                            eleValidClass: '',
+                        })
+                    }
+                }
+            ));
+
+            // Step 2
+            // validations.push(FormValidation.formValidation(
+            //     form,
+            //     {
+            //         fields: {
+            //             address1: {
+            //                 validators: {
+            //                     notEmpty: {
+            //                         message: 'Address is required'
+            //                     }
+            //                 }
+            //             },
+            //             postcode: {
+            //                 validators: {
+            //                     notEmpty: {
+            //                         message: 'Postcode is required'
+            //                     }
+            //                 }
+            //             },
+            //             city: {
+            //                 validators: {
+            //                     notEmpty: {
+            //                         message: 'City is required'
+            //                     }
+            //                 }
+            //             },
+            //             state: {
+            //                 validators: {
+            //                     notEmpty: {
+            //                         message: 'State is required'
+            //                     }
+            //                 }
+            //             },
+            //             country: {
+            //                 validators: {
+            //                     notEmpty: {
+            //                         message: 'Country is required'
+            //                     }
+            //                 }
+            //             }
+            //         },
+            //         plugins: {
+            //             trigger: new FormValidation.plugins.Trigger(),
+            //             // Bootstrap Framework Integration
+            //             bootstrap: new FormValidation.plugins.Bootstrap({
+            //                 //eleInvalidClass: '',
+            //                 eleValidClass: '',
+            //             })
+            //         }
+            //     }
+            // ));
+
+            // Initialize form wizard
+            wizardObj = new KTWizard(wizardEl, {
+                startStep: 1, // initial active step number
+                clickableSteps: false  // allow step clicking
+            });
+
+            // Validation before going to next page
+            wizardObj.on('change', function (wizard) {
+                if (wizard.getStep() > wizard.getNewStep()) {
+                    return; // Skip if stepped back
+                }
+
+                // Validate form before change wizard step
+                var validator = validations[wizard.getStep() - 1]; // get validator for currnt step
+
+                if (validator) {
+                    validator.validate().then(function (status) {
+                        console.log(status)
+                        if (status == 'Valid') {
+                            wizard.goTo(wizard.getNewStep());
+
+                            KTUtil.scrollTop();
+                        } else {
+                            Swal.fire({
+                                text: "Sorryyyyyyyyyy, looks like there are some errors detected, please try again.",
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn font-weight-bold btn-light"
+                                }
+                            }).then(function () {
+                                KTUtil.scrollTop();
+                            });
+                        }
+                    });
+                }
+
+                return false;  // Do not change wizard step, further action will be handled by he validator
+            });
+
+            // Change event
+            wizardObj.on('changed', function (wizard) {
+                KTUtil.scrollTop();
+            });
+
+            // Submit event
+            wizardObj.on('submit', function (wizard) {
+                var validator = validations[wizard.getStep() - 1]; // get validator for currnt step
+
+                if (validator) {
+                    validator.validate().then(function (status) {
+                        console.log(status)
+                        if (status == 'Valid') {
+                            // wizard.goTo(wizard.getNewStep());
+                            Swal.fire({
+                                text: "ยืนยันการลงทะเบียน",
+                                icon: "success",
+                                showCancelButton: true,
+                                buttonsStyling: false,
+                                confirmButtonText: "ตกลง",
+                                cancelButtonText: "ยกเลิก",
+                                customClass: {
+                                    confirmButton: "btn font-weight-bold btn-primary",
+                                    cancelButton: "btn font-weight-bold btn-default"
+                                }
+                            }).then(function (result) {
+                                if (result.value) {
+                                    form.submit(); // Submit form
+                                } else if (result.dismiss === 'cancel') {
+                                    Swal.fire({
+                                        text: "คุณทำการยกเลิก",
+                                        icon: "error",
+                                        buttonsStyling: false,
+                                        confirmButtonText: "Ok!",
+                                        customClass: {
+                                            confirmButton: "btn font-weight-bold btn-danger",
+                                        }
+                                    });
+                                }
+                            });
+                            // KTUtil.scrollTop();
+                        } else {
+                            Swal.fire({
+                                text: "ข้อมูลไม่ถูกต้อง กรุณากรอกอีกครั้ง",
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok!",
+                                customClass: {
+                                    confirmButton: "btn font-weight-bold btn-light"
+                                }
+                            }).then(function () {
+                                KTUtil.scrollTop();
+                            });
+                        }
+                    });
+                }
+                console.log('pass')
+                // return
+
+            });
+        }
+
+        jQuery(document).ready(function() {
+            // _handleFormSignin();
+            _handleFormSignup();
+        });
+
+    </script>
+</body>

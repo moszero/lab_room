@@ -10,6 +10,11 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate
 
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm,SetPasswordForm
+from django.shortcuts import redirect
+
 from app_staff.forms import RetailerForm, RetailerUserForm
 
 from app_staff.models import RetailerUser, Retailer
@@ -169,5 +174,24 @@ class StaffRegisterView(FormView):
                 'password1': self.request.POST.get('password1'),
                 'password2': self.request.POST.get('password2')
             })
-
         return context
+
+def change_password(request):
+    if request.method == 'POST':
+        form = SetPasswordForm(request.user, request.POST)
+        print(form)
+        print(111)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('index')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = SetPasswordForm(request.user)
+        print(form)
+        print(222)
+    return render(request, 'staff/change_password_new.html', {
+        'form': form
+    })

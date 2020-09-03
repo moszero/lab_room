@@ -62,7 +62,7 @@
 				<!--begin::Wrapper-->
 				<div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
 
-					{% include "partials/_header.html" %}
+					{% include "partials/_header_new.html" %}
 
 					<!--begin::Content-->
 					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -115,7 +115,13 @@
 
 			<!--end::Main-->
 
-        {% include "partials/_extras/offcanvas/quick-user.html" %}
+		{% if request.user.retailer_user.retailer.name %}
+		{% include "partials/_extras/offcanvas/quick-user_new_login.html" %}
+		{% else %}
+		{% include "partials/_extras/offcanvas/quick-user_new.html" %}
+		{% endif %}
+
+        <!-- {% include "partials/_extras/offcanvas/quick-user.html" %} -->
 
         {% include "partials/_extras/offcanvas/quick-cart.html" %}
 

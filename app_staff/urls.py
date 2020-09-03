@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 from django.conf.urls import url
+from app_staff.views import change_password
 
 urlpatterns = [
 url(r'^staff/staff_list/$', views.staff_list.as_view(), name='staff_list'),
@@ -11,4 +12,5 @@ url(r'^staff/staff_logout/$', views.StaffLogoutView.as_view(), name='staff_logou
 url(r'^staff/staff_register/$', views.StaffRegisterView.as_view(), name='staff_register'),
 url(r'^staff/staff_views/(?P<pk>\d+)/$', views.StaffDetail.as_view(), name='staff_detail'),
 url(r'^staff/staff_update/(?P<pk>\d+)/$', views.StaffUpdate.as_view(), name='staff_update'),
+url(r'^staff/change_password/$', change_password, name='change_password'),
 ]

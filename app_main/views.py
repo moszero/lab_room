@@ -35,6 +35,9 @@ def index(request):
 class lab_01(TemplateView):
     template_name = 'lab/block_lab1.html'
 
+class perspective(TemplateView):
+    template_name = 'perspective/perspective.html'
+
 class live_tester(TemplateView):
     template_name = 'notification_template/test_live.html'
 

@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Image Crop</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link href="{% static 'perspective/style.css' %}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <div class="container">
+        <div id="background" class="o_image">
+            <img id="sample" src="/media/bill.png" alt="bill"/>
+            <!-- <img src="https://cdn.shopify.com/s/files/1/0812/8149/products/Bunny-Bashful_Beige_Bunny_7c782995-0007-41de-ab15-41c3be94aca0.jpg?v=1573713754" alt="" id="sample" onclick="test();" crossOrigin="Anonymous"> -->
+            <span>©reactcodes blog</span>
+        </div>
+        <div class="p_image">
+            <canvas id="imageInit"></canvas>
+            <canvas id="imageResult"></canvas>
+        </div>
+    </div>
+    <div class="b_container">
+        <button id="apply">Apply</button>
+    </div>
+    <img src="/media/1.jpg" onclick="test();" alt="" id="image2">
+    <img src="https://cdn.shopify.com/s/files/1/0812/8149/products/Bunny-Bashful_Beige_Bunny_7c782995-0007-41de-ab15-41c3be94aca0.jpg?v=1573713754" alt="" id="image" onclick="test();" crossOrigin="Anonymous">
+</body>
+
+<script src="{% static 'perspective/libs/qunit-2.0.1.js' %}"></script>
+<script src="{% static 'perspective/utils.js' %}"></script>
+<script src="{% static 'perspective/perspective.js' %}"></script>
+<script src="{% static 'perspective/libs/d3.v3.min.js' %}"></script>
+<script src="{% static 'perspective/libs/numeric-solve.min.js' %}"></script>
+<script src="{% static 'perspective/index.js' %}"></script>
+<script src="{% static 'perspective/ocrad.js' %}"></script>
+
+<!-- <script src="./libs/qunit-2.0.1.js" type="text/javascript"></script>
+<script src="utils.js" type="text/javascript"></script>
+<script src="perspective.js" type="text/javascript"></script>
+<script src="./libs/d3.v3.min.js"></script>
+<script src="./libs/numeric-solve.min.js"></script>
+<script src="./index.js"></script>
+<script src="./ocrad.js"></script> -->
+
+<script type="text/javascript">
+function test() {
+    var image = document.getElementById('image2');
+    var string = OCRAD(image);
+    console.log(string);
+
+}
+</script>
+</html>
+
+<!-- <div class="p_image">
+    <canvas id="imageInit"></canvas>
+</div>
+<div class="b_container">
+    <button id="apply">Apply</button>
+</div> -->

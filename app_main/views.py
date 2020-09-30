@@ -32,6 +32,9 @@ import string
 def index(request):
     return render(request,'index.html')
 
+def index0(request):
+    return render(request,'index0.html')
+
 class lab_01(TemplateView):
     template_name = 'lab/block_lab1.html'
 

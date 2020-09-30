@@ -25,7 +25,11 @@ const setUpApplyButton = function () {
     const svgCropWidth =  document.querySelector('#background svg').getAttribute('width') - 80
     console.log('h : ',svgCropHeight,' w : ',svgCropWidth)
     const scaleFactor = parseInt(imageWidth / svgCropWidth)
-    debugger
+    pointsArray = document.getElementById('test').value
+    pointsArray = pointsArray.split(',')
+    // pointsArray = ["0","0","320","100","320","200","0","320"]
+    console.log(pointsArray)
+    // debugger
     pointsArray = pointsArray.map( e => {
         const num = parseInt((parseInt(e) + 40)/scaleFactor)
         return num

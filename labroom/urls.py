@@ -33,6 +33,7 @@ urlpatterns = [
     path('test_make/', make_notification),
     path('mark_all_as_read/', mark_all_as_read),
     path('mark_all_as_unread/', mark_all_as_unread),
+    path('formbuilder/',views.index0, name='index0'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

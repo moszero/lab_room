@@ -127,6 +127,17 @@ var _demo1 = function() {
         element: '#pudith',
         gutter: '0',
         widthBoard: '250px',
+        dragItems: true,
+        dragBoards: true,
+        addItemButton: true,
+        buttonContent: '+++',
+        itemHandleOptions: {
+        enabled             : false,                                 // if board item handle is enabled or not
+        handleClass         : "item_handle",                         // css class for your custom item handle
+        customCssHandler    : "drag_handler",                        // when customHandler is undefined, jKanban will use this property to set main handler class
+        customCssIconHandler: "drag_handler_icon",                   // when customHandler is undefined, jKanban will use this property to set main icon handler class. If you want, you can use font icon libraries here
+        customHandler       : "<span class='item_handle'>+</span> %s"// your entirely customized handler. Use %s to position item title
+        },
         boards: [{
                 'id': '_inprocess',
                 'title': 'In Process',

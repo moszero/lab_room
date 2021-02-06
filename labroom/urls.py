@@ -29,6 +29,7 @@ urlpatterns = [
     path('',views.index, name='index'),
     path('main/', include(('app_main.urls','main'),namespace='main')),
     path('staff/',include(('app_staff.urls','staff'), namespace='staff')),
+    path('underground/',include(('app_underground.urls','underground'), namespace='underground')),
     url('^inbox/notifications/', include(notifications.urls, namespace='notification')),
     path('test_make/', make_notification),
     path('mark_all_as_read/', mark_all_as_read),

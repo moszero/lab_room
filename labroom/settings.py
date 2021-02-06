@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'app_main',
     'notifications',
     'app_staff',
+    'app_underground',
 ]
 
 MIDDLEWARE = [
